@@ -13,19 +13,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+@EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "stadium", schema = "information")
+@Table(name = "city", schema = "information")
 @NoArgsConstructor
+@ToString(exclude = {"stadiums", "news"})
 @AllArgsConstructor
 @Data
 @Builder
-@EqualsAndHashCode(of = "id")
-@ToString(exclude = "footballClub")
-public class Stadium implements BaseModel<Integer> {
+public class City implements BaseModel<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,13 +39,13 @@ public class Stadium implements BaseModel<Integer> {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
-    @Column(name = "number_of_seats", nullable = false)
-    private Integer numberOfSeats;
-
     @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @JoinColumn(name = "country_id")
+    private Country country;
 
-    @OneToOne(mappedBy = "stadium")
-    private FootballClub footballClub;
+    @OneToMany(mappedBy = "city")
+    private Set<Stadium> stadiums = new HashSet<>();
+
+    @ManyToMany(mappedBy = "cities")
+    private List<News> news = new ArrayList<>();
 }

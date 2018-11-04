@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,33 +13,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
+@EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "stadium", schema = "information")
+@Table(name = "visitor_comment", schema = "information")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-@EqualsAndHashCode(of = "id")
-@ToString(exclude = "footballClub")
-public class Stadium implements BaseModel<Integer> {
+public class VisitorComment implements BaseModel<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(name = "name", unique = true, nullable = false)
-    private String name;
-
-    @Column(name = "number_of_seats", nullable = false)
-    private Integer numberOfSeats;
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @JoinColumn(name = "news_id")
+    private News news;
 
-    @OneToOne(mappedBy = "stadium")
-    private FootballClub footballClub;
+    @ManyToOne
+    @JoinColumn(name = "visitor_id")
+    private Visitor visitor;
+
+    @Column(name = "text", nullable = false)
+    private String text;
+
+    @Column(name = "date_and_time")
+    private LocalDateTime dateTime;
+
 }

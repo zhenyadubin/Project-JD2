@@ -13,34 +13,44 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+@EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "stadium", schema = "information")
+@Table(name = "coach", schema = "information")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-@EqualsAndHashCode(of = "id")
-@ToString(exclude = "footballClub")
-public class Stadium implements BaseModel<Integer> {
+@ToString(exclude = {"footballClub", "news"})
+public class Coach implements BaseModel<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name", unique = true, nullable = false)
-    private String name;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
 
-    @Column(name = "number_of_seats", nullable = false)
-    private Integer numberOfSeats;
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
 
     @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @JoinColumn(name = "country_id")
+    private Country country;
 
-    @OneToOne(mappedBy = "stadium")
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
+
+    @OneToOne(mappedBy = "coach")
     private FootballClub footballClub;
+
+    @ManyToMany(mappedBy = "coaches")
+    private List<News> news = new ArrayList<>();
 }

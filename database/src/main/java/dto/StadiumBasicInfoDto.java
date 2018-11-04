@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class StadiumBasicInfoDto {
 
-    private int id;
+    private Integer id;
     private String name;
 }
