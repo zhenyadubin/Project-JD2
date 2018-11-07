@@ -9,9 +9,6 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -30,11 +27,7 @@ import java.util.List;
 @Data
 @Builder
 @ToString(exclude = {"comments", "countries", "cities", "leagues", "coaches", "clubs", "players"})
-public class News implements BaseModel<Long> {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class News extends BaseModel<Long> {
 
     @Column(name = "name", nullable = false)
     private String name;

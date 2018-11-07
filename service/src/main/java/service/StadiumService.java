@@ -1,6 +1,6 @@
 package service;
 
-import dao.StadiumDao;
+import dao.StadiumDaoImpl;
 import dto.StadiumBasicInfoDto;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ public class StadiumService {
     private static final StadiumService INSTANCE = new StadiumService();
 
     public List<StadiumBasicInfoDto> getAll() {
-        return StadiumDao.getInstance().getAll().stream()
+        return StadiumDaoImpl.getInstance().findAll().stream()
                 .map(it -> new StadiumBasicInfoDto(it.getId(), it.getName()))
                 .collect(Collectors.toList());
     }

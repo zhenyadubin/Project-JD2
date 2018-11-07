@@ -1,5 +1,9 @@
 .idea/
+target/
 *.iml
 database/*.iml
+database/target/
 service/*.iml
+service/target/
 web/*.iml
+web/target/

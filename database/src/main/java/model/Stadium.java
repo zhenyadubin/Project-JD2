@@ -9,9 +9,6 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -25,11 +22,7 @@ import javax.persistence.Table;
 @Builder
 @EqualsAndHashCode(of = "id")
 @ToString(exclude = "footballClub")
-public class Stadium implements BaseModel<Integer> {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Stadium extends BaseModel<Integer> {
 
     @Column(name = "name", unique = true, nullable = false)
     private String name;

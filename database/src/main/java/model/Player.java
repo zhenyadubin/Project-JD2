@@ -12,9 +12,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -31,11 +28,7 @@ import java.util.List;
 @Data
 @Builder
 @ToString(exclude = "news")
-public class Player implements BaseModel<Integer> {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Player extends BaseModel<Integer> {
 
     @Column(name = "first_name", nullable = false)
     private String firstName;

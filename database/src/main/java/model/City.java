@@ -9,9 +9,6 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -26,15 +23,11 @@ import java.util.Set;
 @Entity
 @Table(name = "city", schema = "information")
 @NoArgsConstructor
-@ToString(exclude = {"stadiums", "news"})
+@ToString(callSuper = true, exclude = {"stadiums", "news"})
 @AllArgsConstructor
 @Data
 @Builder
-public class City implements BaseModel<Integer> {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class City extends BaseModel<Integer> {
 
     @Column(name = "name", unique = true, nullable = false)
     private String name;

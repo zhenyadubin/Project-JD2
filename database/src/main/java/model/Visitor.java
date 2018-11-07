@@ -10,9 +10,8 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -29,11 +28,7 @@ import java.util.List;
 @Data
 @Builder
 @ToString(exclude = {"news", "comments", "countries", "cities", "leagues", "coaches", "clubs", "players"})
-public class Visitor implements BaseModel<Long> {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Visitor extends BaseModel<Long> {
 
     @Column(name = "visitor_name", unique = true, nullable = false)
     private String name;
@@ -44,6 +39,7 @@ public class Visitor implements BaseModel<Long> {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private Role role;
 
