@@ -9,6 +9,7 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -34,6 +35,6 @@ public class Stadium extends BaseModel<Integer> {
     @JoinColumn(name = "city_id")
     private City city;
 
-    @OneToOne(mappedBy = "stadium")
+    @OneToOne(mappedBy = "stadium", fetch = FetchType.LAZY)
     private FootballClub footballClub;
 }
