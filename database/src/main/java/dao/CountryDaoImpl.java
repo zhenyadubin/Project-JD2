@@ -6,7 +6,6 @@ public class CountryDaoImpl extends BaseDaoImpl<Integer, Country> implements Cou
 
     private static final CountryDaoImpl INSTANCE = new CountryDaoImpl();
 
-
     public static CountryDaoImpl getInstance() {
         return INSTANCE;
     }

@@ -18,6 +18,7 @@ public class CountryDaoTest {
                 .build();
         Serializable id = CountryDaoImpl.getInstance().save(country);
         assertNotNull(id);
+        CountryDaoImpl.getInstance().delete(country);
     }
 
     @Test
@@ -29,6 +30,7 @@ public class CountryDaoTest {
         assertNotNull(savedId);
         Country saveCountry = CountryDaoImpl.getInstance().find((Integer) savedId);
         assertNotNull(saveCountry);
+        CountryDaoImpl.getInstance().delete(country);
     }
 
     @Test
@@ -45,6 +47,8 @@ public class CountryDaoTest {
         assertNotNull(savedId2);
         List<Country> countries = CountryDaoImpl.getInstance().findAll();
         assertNotNull(countries);
+        CountryDaoImpl.getInstance().delete(firstCountry);
+        CountryDaoImpl.getInstance().delete(secondCountry);
     }
 
     @Test
@@ -70,6 +74,7 @@ public class CountryDaoTest {
         CountryDaoImpl.getInstance().update(country);
         Country countryTest = CountryDaoImpl.getInstance().find((Integer) savedId);
         assertEquals(country, countryTest);
+        CountryDaoImpl.getInstance().delete(country);
     }
 }
 

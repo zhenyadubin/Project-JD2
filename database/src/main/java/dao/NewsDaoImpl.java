@@ -18,6 +18,7 @@ public class NewsDaoImpl extends BaseDaoImpl<Long, News> implements NewsDao {
 
     private static final NewsDaoImpl INSTANCE = new NewsDaoImpl();
 
+    @Override
     public void addTags(News news, Country country, City city, Coach coach, Player player, FootballClub club, League league) {
         @Cleanup Session session = ConnectionManager.getSession();
         session.beginTransaction();
@@ -49,6 +50,7 @@ public class NewsDaoImpl extends BaseDaoImpl<Long, News> implements NewsDao {
         session.getTransaction().commit();
     }
 
+    @Override
     public News getNewsWithTags(Long id) {
         Session session = ConnectionManager.getSession();
         session.beginTransaction();
