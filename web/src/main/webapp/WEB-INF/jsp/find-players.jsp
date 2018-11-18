@@ -13,6 +13,7 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/find-players" method="post">
+    Клуб
     <select name="club" id="club">
         <option></option>
         <c:forEach var="club" items="${requestScope.clubs}">
@@ -20,18 +21,23 @@
         </c:forEach>
     </select><br>
 
-    <label>Дата before:
+    <label>Родился с:
         <input type="date" name="dateBefore">
-    </label><br>
+    </label>
 
-    <label>Дата after:
+    <label>по:
         <input type="date" name="dateAfter">
     </label><br>
 
+    Позиция:
     <input type="radio" name="position" value="GOALKEEPER"> Вратарь
     <input type="radio" name="position" value="DEFENDER"> Защитник
     <input type="radio" name="position" value="MIDFIELDER"> Полузащитник
     <input type="radio" name="position" value="FORWARD"> Нападающий <br>
+
+    <p>Сколько игроков показывать в списке?</p>
+    <p><input type="number" name="limit" value="2" min="2" max="10" step="1"></p>
+
     <input type="submit" value="Поиск">
 </form>
 </body>
