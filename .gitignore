@@ -3,7 +3,7 @@ target/
 *.iml
 database/*.iml
 database/target/
-service/*.iml
-service/target/
+com.dubin.football.database.service/*.iml
+com.dubin.football.database.service/target/
 web/*.iml
 web/target/
