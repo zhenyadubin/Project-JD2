@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add tags</title>
+</head>
+<body>
+<div th:insert="~{main-header}">header</div>
+<div class="container">
+    <form th:action="@{/add-tags-to-news}" th:method="post" th:object="${tagsForNews}">
+        <div class="form-group">
+            <select name="news" id="news" th:field="*{newsId}">
+                <option th:each="currentNews : ${news}"
+                        th:value="${currentNews.id}"
+                        th:text="${currentNews.title}">
+                    News
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select name="country" id="country" th:field="*{countryId}">
+                <option th:each="currentCountry : ${countries}"
+                        th:value="${currentCountry.id}"
+                        th:text="${currentCountry.name}">
+                    Country
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select name="city" id="city" th:field="*{cityId}">
+                <option th:each="currentCity : ${cities}"
+                        th:value="${currentCity.id}"
+                        th:text="${currentCity.name}">
+                    City
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select name="league" id="league" th:field="*{leagueId}">
+                <option th:each="currentLeague : ${leagues}"
+                        th:value="${currentLeague.id}"
+                        th:text="${currentLeague.name}">
+                    League
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select name="footballClub" id="footballClub" th:field="*{clubId}">
+                <option th:each="currentClub : ${footballClub}"
+                        th:value="${currentClub.id}"
+                        th:text="${currentClub.name}">
+                    Football Club
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select name="coach" id="coach" th:field="*{coachId}">
+                <option th:each="currentCoach : ${coaches}"
+                        th:value="${currentCoach.id}"
+                        th:text="${currentCoach.fullName}">
+                    Coach
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select name="player" id="player" th:field="*{playerId}">
+                <option th:each="currentPlayer : ${players}"
+                        th:value="${currentPlayer.id}"
+                        th:text="${currentPlayer.lastName}">
+                    Player
+                </option>
+            </select>
+        </div>
+
+        <input type="submit" th:value="Add_Tags">
+    </form>
+</div>
+</body>
+</html>

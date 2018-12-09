@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All News</title>
+</head>
+<body>
+    <div>
+        <a href="visitor-info.html" th:href="@{/visitor-info}" text="ЛИЧНЫЙ КАБИНЕ">ЛИЧНЫЙ КАБИНЕТ</a>
+        <a href="all-news.html" th:href="@{/all-news}" text="НОВОСТИ">НОВОСТИ</a>
+        <a href="leagues.html" th:href="@{/leagues}" text="ЧЕМПИОНАТЫ">ЧЕМПИОНАТЫ</a>
+
+        <a href="create-player.html" th:href="@{/create-player}" text="ДОБАВИТЬ ИГРОКА">ДОБАВИТЬ ИГРОКА</a>
+
+        <a href="create-news.html" th:href="@{/create-news}" text="ДОБАВИТЬ НОВОСТЬ">ДОБАВИТЬ НОВОСТЬ</a>
+        <a href="add-tags-to-news.html" th:href="@{/add-tags-to-news}" text="ДОБАВИТЬ ТЕГИ К НОВОСТИ">ДОБАВИТЬ ТЕГИ К НОВОСТИ</a>
+
+        <form  th:action="@{/logout}" th:method="post">
+            <input type="submit" th:value="ВЫЙТИ">
+        </form>
+
+    </div>
+</body>
+</html>

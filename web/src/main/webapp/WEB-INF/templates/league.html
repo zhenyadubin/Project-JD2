@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>League</title>
+</head>
+<body>
+<div>
+    <div th:insert="~{main-header}">header</div>
+    Лига:
+    <span th:text="${league.name}"> Название лиги:</span> <br>
+    Количество участников:
+    <span th:text="${league.numberOfClubs}"> Количество участников:</span> <br>
+    Страна:
+    <span th:text="${league.country}"> Страна:</span> <br>
+
+    <div th:each="footballClub: ${footballClubs}">
+        <a href="football-club.html" th:href="@{/football-club(id=${footballClub.id})}" th:text="${footballClub.name}">Клуб</a>
+    </div>
+
+    <span>Новости:</span><br>
+
+    <div th:each="news: ${allNews}">
+        <a href="news.html" th:href="@{/news(id=${news.id})}"
+           th:text="${news.title} + ${news.dateAndTime}">Title</a>
+    </div>
+</div>
+</body>
+</html>

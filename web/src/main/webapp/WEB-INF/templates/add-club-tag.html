@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Football Club tag</title>
+</head>
+<body>
+<form th:action="@{/add-club-tag}" th:method="post" th:object="${clubTag}">
+    <div class="form-group">
+        <select name="club" id="club" th:field="*{footballClubId}">
+            <option th:each="currentClub : ${clubsTag}"
+                    th:value="${currentClub.id}"
+                    th:text="${currentClub.name}">
+                Club
+            </option>
+        </select>
+    </div>
+    <input type="submit" th:value="Add_Club_Tag">
+</form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Leagues</title>
+</head>
+<body>
+<div th:insert="~{main-header}">header</div>
+<div th:each="league: ${leagues}">
+    <a href="league.html" th:href="@{/league(id=${league.id})}" th:text="${league.name}">League</a>
+</div>
+</body>
+</html>
