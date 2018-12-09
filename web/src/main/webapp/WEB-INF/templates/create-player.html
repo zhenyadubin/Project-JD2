@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Player</title>
+</head>
+<body>
+<div th:insert="~{main-header}">header</div>
+<div class="container">
+    <form th:action="@{/create-player}" th:method="post" th:object="${createPlayerDto}">
+
+        <label for="playersFirstName">Имя:
+            <input id="playersFirstName" th:type="text" th:field="*{firstName}">
+        </label><br>
+
+        <label for="playersLastName">Фамилия:
+            <input id="playersLastName" th:type="text" th:field="*{lastName}">
+        </label><br>
+
+        <div class="form-group">Гражданство:
+            <select name="country" id="country" th:field="*{countryId}">
+                <option th:each="currentCountry : ${countries}"
+                        th:value="${currentCountry.id}"
+                        th:text="${currentCountry.name}">
+                    Country
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">Выступает за клуб:
+            <select name="footballClub" id="footballClub" th:field="*{clubId}">
+                <option th:each="currentClub : ${footballClub}"
+                        th:value="${currentClub.id}"
+                        th:text="${currentClub.name}">
+                    Football Club
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group"> Позиция: <br>
+            <div th:each="simplePosition: ${allPosition}">
+                <input type="radio" th:value="${simplePosition}" th:field="*{position}">
+                <span th:text="${simplePosition}">Position</span>
+            </div>
+        </div>
+
+        <label for="playerNumber">Номер:
+            <input id="playerNumber" th:type="number" th:field="*{number}">
+        </label><br>
+
+        <label for="birthDate"> Дата рождения:
+        <input id="birthDate" type="date"
+
+               th:field="*{birthDate}"/><br>
+        </label>
+
+        <input type="submit" th:value="Создать">
+    </form>
+</div>
+</body>
+</html>

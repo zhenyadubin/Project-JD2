@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>League tag</title>
+</head>
+<body>
+<form th:action="@{/add-league-tag}" th:method="post" th:object="${leagueTag}">
+    <div class="form-group">
+        <select name="league" id="league" th:field="*{leagueId}">
+            <option th:each="currentLeague : ${leaguesTag}"
+                    th:value="${currentLeague.id}"
+                    th:text="${currentLeague.name}">
+                League
+            </option>
+        </select>
+    </div>
+    <input type="submit" th:value="Add_League_Tag">
+</form>
+</body>
+</html>

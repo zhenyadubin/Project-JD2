@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>City tag</title>
+</head>
+<body>
+<form th:action="@{/add-city-tag}" th:method="post" th:object="${cityTag}">
+    <div class="form-group">
+        <select name="city" id="city" th:field="*{cityId}">
+            <option th:each="currentCity : ${citiesTag}"
+                    th:value="${currentCity.id}"
+                    th:text="${currentCity.name}">
+                City
+            </option>
+        </select>
+    </div>
+    <input type="submit" th:value="Add_City_Tag">
+</form>
+</body>
+</html>

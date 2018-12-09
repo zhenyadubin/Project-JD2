@@ -11,4 +11,7 @@ public interface BasePlayerDao {
 
     List<Player> findByFilter(FootballClub club, PlayerPosition position, LocalDate dateBefore, LocalDate dateAfter
             , Long limit, Long offset);
+
+    List<Player> byFilter(FootballClub club, PlayerPosition position, LocalDate dateBefore, LocalDate dateAfter
+            , Long limit, Long offset);
 }

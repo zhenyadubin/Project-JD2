@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -50,6 +51,6 @@ public class FootballClub extends BaseModel<Integer> {
     @OneToMany(mappedBy = "footballClub")
     private List<Player> players = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "clubs")
+    @ManyToMany(mappedBy = "clubs", cascade = CascadeType.ALL)
     private List<News> news = new ArrayList<>();
 }

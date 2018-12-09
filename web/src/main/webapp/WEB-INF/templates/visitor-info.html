@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Visitor</title>
+</head>
+<body>
+<div th:insert="~{main-header}">header</div>
+<span th:text="#{visitor.name}">Name:</span>
+<span th:text="${visitor.name}">Name</span> <br>
+<span th:text="${visitor.email}">Email</span> <br>
+<span th:text="${visitor.role}">Role</span><br>
+<br>
+Вы следите за:
+<div th:each="country: ${countries}">
+    <a href="country.html" th:href="@{/country(id=${country.id})}" th:text="${country.name}">Country</a>
+</div>
+
+<div th:each="city: ${cities}">
+    <a href="city.html" th:href="@{/city(id=${city.id})}" th:text="${city.name}">City</a>
+</div>
+
+<div th:each="league: ${leagues}">
+    <a href="league.html" th:href="@{/league(id=${league.id})}" th:text="${league.name}">League</a>
+</div>
+
+<div th:each="club: ${clubs}">
+    <a href="football-club.html" th:href="@{/football-club(id=${club.id})}" th:text="${club.name}">Club</a>
+</div>
+
+<div th:each="coach: ${coaches}">
+    <a href="coach.html" th:href="@{/coach(id=${coach.id})}" th:text="${coach.fullName}">Coach</a>
+</div>
+
+<div th:each="player: ${players}">
+    <a href="player.html" th:href="@{/player(id=${player.id})}" th:text="${player.lastName}">Player</a>
+</div>
+<br>
+Добавьте свои предпочтения!
+
+<div>
+    <a href="add-country-tag.html" th:href="@{/add-country-tag}">Добавить страну</a>
+</div>
+
+<div>
+    <a href="add-city-tag.html" th:href="@{/add-city-tag}">Добавить город</a>
+</div>
+
+<div>
+    <a href="add-league-tag.html" th:href="@{/add-league-tag}">Добавить лигу</a>
+</div>
+
+<div>
+    <a href="add-club-tag.html" th:href="@{/add-club-tag}">Добавить команду</a>
+</div>
+
+<div>
+    <a href="add-coach-tag.html" th:href="@{/add-coach-tag}">Добавить тренера</a>
+</div>
+
+<div>
+    <a href="add-player-tag.html" th:href="@{/add-player-tag}">Добавить игрока</a>
+</div>
+</body>
+</html>

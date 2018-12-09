@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FootballClub</title>
+</head>
+<body>
+<div th:insert="~{main-header}">header</div>
+Клуб:
+<span th:text="${footballClub.name}"> Название клуба</span> <br>
+Основан в:
+<span th:text="${footballClub.foundationDate}"> Год основания</span> <br>
+Стадион:
+<span th:text="${footballClub.stadiumName}"> Стадион</span> <br>
+Город:
+<span th:text="${footballClub.cityName}"> Город</span> <br>
+Участвует в Лиге:
+<span th:text="${footballClub.leagueName}"> Название лиги</span> <br>
+Тренер:
+<span> <a href="coach.html" th:href="@{/coach(id=${footballClub.coachId})}"
+          th:text="${footballClub.coachName}">ФИО тренера</a>
+</span><br>
+<br>
+<span>Состав:</span><br>
+
+<div th:each="player: ${players}">
+    <a href="player.html" th:href="@{/player(id=${player.id})}"
+       th:text="${player.firstName} + ${player.lastName}">Player</a>
+</div>
+<br>
+<span>Новости:</span><br>
+
+<div th:each="news: ${allNews}">
+    <a href="news.html" th:href="@{/news(id=${news.id})}"
+       th:text="${news.title} + ${news.dateAndTime}">Title</a>
+</div>
+
+</body>
+</html>

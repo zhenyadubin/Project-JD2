@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Country tag</title>
+</head>
+<body>
+<form th:action="@{/add-country-tag}" th:method="post" th:object="${countryTag}">
+    <div class="form-group">
+        <select name="country" id="country" th:field="*{countryId}">
+            <option th:each="currentCountry : ${countriesTag}"
+                    th:value="${currentCountry.id}"
+                    th:text="${currentCountry.name}">
+                Country
+            </option>
+        </select>
+    </div>
+    <input type="submit" th:value="Add_Country_Tag">
+</form>
+</body>
+</html>

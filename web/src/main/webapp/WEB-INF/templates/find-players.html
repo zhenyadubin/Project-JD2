@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Find Players</title>
+</head>
+<body>
+<div th:insert="~{main-header}">header</div>
+<form th:action="@{/find-players}" th:method="post">
+
+    <select name="club" id="club" >
+        <option></option>
+        <option th:each="club: ${clubs}"
+                th:value="${club.id}"
+                th:text="${club.name}">Current type
+        </option>
+    </select><br>
+
+    <label>Родился с:
+        <input th:type="date" value="dateBefore">
+        <!--<input type="date" th:field="*{dateBefore}"/>-->
+    </label>
+
+    <label>по:
+        <input th:type="date" value="dateAfter">
+        <!--<input type="date" th:field="*{dateAfter}"/>-->
+    </label><br>
+
+    Позиция:
+    <input th:type="radio" th:name="position" th:value="GOALKEEPER"> Вратарь
+    <input th:type="radio" th:name="position" th:value="DEFENDER"> Защитник
+    <input th:type="radio" th:name="position" th:value="MIDFIELDER"> Полузащитник
+    <input th:type="radio" th:name="position" th:value="FORWARD"> Нападающий <br>
+
+    <p>Сколько игроков показывать в списке?</p>
+    <p><input th:type="number" th:name="limit" th:value="2" min="2" max="10" step="1"></p>
+
+    <input type="submit" th:value="Поиск">
+
+</form>
+</body>
+</html>

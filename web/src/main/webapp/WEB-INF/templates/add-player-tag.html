@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Player tag</title>
+</head>
+<body>
+<form th:action="@{/add-player-tag}" th:method="post" th:object="${playerTag}">
+    <div class="form-group">
+        <select name="player" id="player" th:field="*{playerId}">
+            <option th:each="currentPlayer : ${playersTag}"
+                    th:value="${currentPlayer.id}"
+                    th:text="${currentPlayer.firstName} + ${currentPlayer.lastName}">
+                Player
+            </option>
+        </select>
+    </div>
+    <input type="submit" th:value="Add_Player_Tag">
+</form>
+</body>
+</html>

@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class StadiumService {
 
-    @Autowired
     private final StadiumDao stadiumDao;
 
     public List<StadiumBasicInfoDto> getAll() {

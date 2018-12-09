@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Player</title>
+</head>
+<body>
+<div th:insert="~{main-header}">header</div>
+Имя:
+<span th:text="${player.firstName}"> Имя</span> <br>
+Фамилия:
+<span th:text="${player.lastName}"> Фамилия</span> <br>
+Родился в:
+<span th:text="${player.birthDate}"> Дата рождения</span> <br>
+Гражданство:
+<span th:text="${player.countryName}"> Страна</span> <br>
+Футбольный клуб:
+<span th:text="${player.footballClubName}"> Клуб</span> <br>
+Играет на позиции:
+<span th:text="${player.position}"> Позиция</span> <br>
+Номер:
+<span th:text="${player.number}"> Номер</span> <br>
+
+<span>Новости:</span><br>
+
+<div th:each="news: ${allNews}">
+    <a href="news.html" th:href="@{/news(id=${news.id})}"
+       th:text="${news.title} + ${news.dateAndTime}">Title</a>
+</div>
+</body>
+</html>

@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -42,6 +43,6 @@ public class League extends BaseModel<Integer> {
     @OneToMany(mappedBy = "league")
     private Set<FootballClub> footballClubs = new HashSet<>();
 
-    @ManyToMany(mappedBy = "leagues")
+    @ManyToMany(mappedBy = "leagues", cascade = CascadeType.ALL)
     private List<News> news = new ArrayList<>();
 }

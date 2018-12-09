@@ -99,4 +99,22 @@ public class PlayerDaoImpl implements BasePlayerDao {
         }
         return players;
     }
+
+    public List<Player> byFilter(FootballClub club, PlayerPosition position, LocalDate dateBefore, LocalDate dateAfter
+            , Long limit, Long offset) {
+        List<Player> players;
+        players = new JPAQuery<Player>(entityManager)
+                .select(QPlayer.player)
+                .from(QPlayer.player)
+                .where(QPlayer.player.footballClub.isNull().or(QPlayer.player.footballClub.eq(club)))
+                .where(QPlayer.player.playerPosition.isNull().or(QPlayer.player.playerPosition.eq(position)))
+                .where(QPlayer.player.birthDate.isNull().or(QPlayer.player.birthDate.between(dateBefore, dateAfter)))
+                .orderBy(QPlayer.player.birthDate.asc())
+                .limit(limit)
+                .offset(offset)
+                .fetch();
+        return players;
+    }
 }
+
+

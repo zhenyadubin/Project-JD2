@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+</head>
+<body>
+<div th:insert="~{main-header}">header</div>
+<span th:text="${news.title}">Title</span> <br>
+<br>
+<span th:text="${news.text}">Title</span> <br>
+<br>
+<span th:text="${news.dateAndTime}">DateAndTime</span><br>
+
+<span th:text="${news.authorName}">Author</span><br>
+
+<div th:each="country: ${countries}">
+    <span th:text="${country.name}">Country</span>
+</div>
+
+<div th:each="city: ${cities}">
+    <span th:text="${city.name}">City</span>
+</div>
+
+<div th:each="league: ${leagues}">
+    <span th:text="${league.name}">League</span>
+</div>
+
+<div th:each="club: ${clubs}">
+    <span th:text="${club.name}">Football Club</span>
+</div>
+
+<div th:each="coach: ${coaches}">
+    <span th:text="${coach.fullName}">Coach</span>
+</div>
+
+<div th:each="player: ${players}">
+    <span th:text="${player.lastName}">Player</span>
+</div>
+</body>
+</html>
